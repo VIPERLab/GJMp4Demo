@@ -45,14 +45,7 @@ extern "C" int main( int argc, char** argv )
     MP4TrackId trackId = MP4_INVALID_TRACK_ID;
     MP4SampleId sampleId = MP4_INVALID_SAMPLE_ID;
     char* dstFileName = NULL;
-    uint32_t verbosity = MP4_DETAILS_ERROR;
-
-#if 0
-    fprintf( stderr, "You don't want to use this utility - use mp4creator --extract instead\n" );
-    fprintf( stderr, "If you really want to use it, remove this warning and the exit call\n" );
-    fprintf( stderr, "from the source file\n" );
-    exit( -1 );
-#endif
+    MP4LogLevel verbosity = MP4_LOG_ERROR;
 
     /* begin processing command line */
     ProgName = argv[0];
@@ -96,18 +89,18 @@ extern "C" int main( int argc, char** argv )
                 }
                 break;
             case 'v':
-                verbosity |= MP4_DETAILS_READ;
+                verbosity = MP4_LOG_VERBOSE1;
                 if ( prog::optarg ) {
                     uint32_t level;
                     if ( sscanf( prog::optarg, "%u", &level ) == 1 ) {
                         if ( level >= 2 ) {
-                            verbosity |= MP4_DETAILS_TABLE;
+                            verbosity = MP4_LOG_VERBOSE2;
                         }
                         if ( level >= 3 ) {
-                            verbosity |= MP4_DETAILS_SAMPLE;
+                            verbosity = MP4_LOG_VERBOSE3;
                         }
                         if ( level >= 4 ) {
-                            verbosity = MP4_DETAILS_ALL;
+                            verbosity = MP4_LOG_VERBOSE4;
                         }
                     }
                 }
@@ -130,6 +123,7 @@ extern "C" int main( int argc, char** argv )
         exit( 1 );
     }
 
+    MP4LogSetLevel(verbosity);
     if ( verbosity ) {
         fprintf( stderr, "%s version %s\n", ProgName, MP4V2_PROJECT_version );
     }
@@ -162,7 +156,7 @@ extern "C" int main( int argc, char** argv )
     /* end processing of command line */
 
 
-    MP4FileHandle mp4File = MP4Read( Mp4PathName, verbosity );
+    MP4FileHandle mp4File = MP4Read( Mp4PathName );
 
     if ( !mp4File ) {
         exit( 1 );
@@ -193,17 +187,20 @@ extern "C" int main( int argc, char** argv )
 void ExtractTrack( MP4FileHandle mp4File, MP4TrackId trackId,
                    bool sampleMode, MP4SampleId sampleId, char* dstFileName )
 {
-    char outName[MP4V2_PATH_MAX];
+    static string outName;
     File out;
 
     if( !sampleMode ) {
-        if( !dstFileName )
-            snprintf( outName, sizeof( outName ), "%s.t%u", Mp4FileName, trackId );
-        else
-            snprintf( outName, sizeof( outName ), "%s", dstFileName );
+        if( !dstFileName ) {
+            stringstream ss;
+            ss << Mp4FileName << ".t" << trackId;
+            outName = ss.str();
+        } else {
+            outName = dstFileName;
+        }
 
-        if( out.open( outName, File::MODE_CREATE )) {
-            fprintf( stderr, "%s: can't open %s: %s\n", ProgName, outName, sys::getLastErrorStr() );
+        if( out.open( outName.c_str(), File::MODE_CREATE )) {
+            fprintf( stderr, "%s: can't open %s: %s\n", ProgName, outName.c_str(), sys::getLastErrorStr() );
             return;
         }
     }
@@ -224,22 +221,24 @@ void ExtractTrack( MP4FileHandle mp4File, MP4TrackId trackId,
         uint32_t sampleSize = 0;
 
         if( !MP4ReadSample( mp4File, trackId, sampleId, &pSample, &sampleSize )) {
-            fprintf( stderr, "%s: read sample %u for %s failed\n", ProgName, sampleId, outName );
+            fprintf( stderr, "%s: read sample %u for %s failed\n", ProgName, sampleId, outName.c_str() );
             break;
         }
 
         if ( sampleMode ) {
-            snprintf( outName, sizeof( outName ), "%s.t%u.s%u", Mp4FileName, trackId, sampleId );
+            stringstream ss;
+            ss << Mp4FileName << ".t" << trackId << ".s" << sampleId;
+            outName = ss.str();
 
-            if( out.open( outName, File::MODE_CREATE )) {
-                fprintf( stderr, "%s: can't open %s: %s\n", ProgName, outName, sys::getLastErrorStr() );
+            if( out.open( outName.c_str(), File::MODE_CREATE )) {
+                fprintf( stderr, "%s: can't open %s: %s\n", ProgName, outName.c_str(), sys::getLastErrorStr() );
                 break;
             }
         }
 
         File::Size nout;
         if( out.write( pSample, sampleSize, nout )) {
-            fprintf( stderr, "%s: write to %s failed: %s\n", ProgName, outName, sys::getLastErrorStr() );
+            fprintf( stderr, "%s: write to %s failed: %s\n", ProgName, outName.c_str(), sys::getLastErrorStr() );
             break;
         }
 

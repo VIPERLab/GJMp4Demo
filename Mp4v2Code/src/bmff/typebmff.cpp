@@ -23,20 +23,12 @@
 
 #include "impl.h"
 
-// VStudio idiocy prevents defining template instanced static data
-// in a namespace. Workaround it by defining in global scope.
-// Other platforms will continue to put things in the proper namespace.
-#if defined( _MSC_VER )
-using namespace mp4v2::impl::bmff;
-#else
-namespace mp4v2 { namespace impl { namespace bmff {
-#endif
-}}} // namespace mp4v2::impl::bmff
+namespace mp4v2 { namespace impl {
 
 ///////////////////////////////////////////////////////////////////////////////
 
 template <>
-const mp4v2::impl::bmff::EnumLanguageCode::Entry mp4v2::impl::bmff::EnumLanguageCode::data[] = {
+const bmff::EnumLanguageCode::Entry bmff::EnumLanguageCode::data[] = {
     { mp4v2::impl::bmff::ILC_AAR,  "aar",  "Afar" },
     { mp4v2::impl::bmff::ILC_ABK,  "abk",  "Abkhazian" },
     { mp4v2::impl::bmff::ILC_ACE,  "ace",  "Achinese" },
@@ -527,11 +519,13 @@ const mp4v2::impl::bmff::EnumLanguageCode::Entry mp4v2::impl::bmff::EnumLanguage
 
 ///////////////////////////////////////////////////////////////////////////////
 
+namespace bmff {
 
 ///////////////////////////////////////////////////////////////////////////////
 
 // must come after static data init
-const mp4v2::impl::bmff::EnumLanguageCode enumLanguageCode;
+const EnumLanguageCode enumLanguageCode;
 
 ///////////////////////////////////////////////////////////////////////////////
 
+}}} // namespace mp4v2::impl::bmff

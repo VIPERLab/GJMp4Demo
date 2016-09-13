@@ -24,20 +24,12 @@
 
 #include "impl.h"
 
-// VStudio idiocy prevents defining template instanced static data
-// in a namespace. Workaround it by defining in global scope.
-// Other platforms will continue to put things in the proper namespace.
-#if defined( _MSC_VER )
-using namespace mp4v2::impl::itmf;
-#else
-namespace mp4v2 { namespace impl { namespace itmf {
-#endif
-}}} // namespace mp4v2::impl::itmf
+namespace mp4v2 { namespace impl {
 
 ///////////////////////////////////////////////////////////////////////////////
 
 template <>
-const mp4v2::impl::itmf::EnumBasicType::Entry mp4v2::impl::itmf::EnumBasicType::data[] = {
+const itmf::EnumBasicType::Entry itmf::EnumBasicType::data[] = {
     { mp4v2::impl::itmf::BT_IMPLICIT,  "implicit",  "implicit" },
     { mp4v2::impl::itmf::BT_UTF8,      "utf8",      "UTF-8" },
     { mp4v2::impl::itmf::BT_UTF16,     "utf16",     "UTF-16" },
@@ -65,7 +57,7 @@ const mp4v2::impl::itmf::EnumBasicType::Entry mp4v2::impl::itmf::EnumBasicType::
 ///////////////////////////////////////////////////////////////////////////////
 
 template <>
-const mp4v2::impl::itmf::EnumGenreType::Entry mp4v2::impl::itmf::EnumGenreType::data[] = {
+const itmf::EnumGenreType::Entry itmf::EnumGenreType::data[] = {
     { mp4v2::impl::itmf::GENRE_BLUES,             "blues",             "Blues" },
     { mp4v2::impl::itmf::GENRE_CLASSIC_ROCK,      "classicrock",       "Classic Rock" },
     { mp4v2::impl::itmf::GENRE_COUNTRY,           "country",           "Country" },
@@ -201,7 +193,7 @@ const mp4v2::impl::itmf::EnumGenreType::Entry mp4v2::impl::itmf::EnumGenreType::
 ///////////////////////////////////////////////////////////////////////////////
 
 template <>
-const mp4v2::impl::itmf::EnumStikType::Entry mp4v2::impl::itmf::EnumStikType::data[] = {
+const itmf::EnumStikType::Entry itmf::EnumStikType::data[] = {
     { mp4v2::impl::itmf::STIK_OLD_MOVIE,    "oldmovie",    "Movie" },
     { mp4v2::impl::itmf::STIK_NORMAL,       "normal",      "Normal" },
     { mp4v2::impl::itmf::STIK_AUDIOBOOK,    "audiobook",   "Audio Book" },
@@ -217,7 +209,7 @@ const mp4v2::impl::itmf::EnumStikType::Entry mp4v2::impl::itmf::EnumStikType::da
 ///////////////////////////////////////////////////////////////////////////////
 
 template <>
-const mp4v2::impl::itmf::EnumAccountType::Entry mp4v2::impl::itmf::EnumAccountType::data[] = {
+const itmf::EnumAccountType::Entry itmf::EnumAccountType::data[] = {
     { mp4v2::impl::itmf::AT_ITUNES,  "itunes",   "iTunes" },
     { mp4v2::impl::itmf::AT_AOL,     "aol",      "AOL" },
 
@@ -227,7 +219,7 @@ const mp4v2::impl::itmf::EnumAccountType::Entry mp4v2::impl::itmf::EnumAccountTy
 ///////////////////////////////////////////////////////////////////////////////
 
 template <>
-const mp4v2::impl::itmf::EnumCountryCode::Entry mp4v2::impl::itmf::EnumCountryCode::data[] = {
+const itmf::EnumCountryCode::Entry itmf::EnumCountryCode::data[] = {
     { mp4v2::impl::itmf::CC_USA,  "usa",   "United States" },
     { mp4v2::impl::itmf::CC_USA,  "fra",   "France" },
     { mp4v2::impl::itmf::CC_DEU,  "ger",   "Germany" },
@@ -257,7 +249,7 @@ const mp4v2::impl::itmf::EnumCountryCode::Entry mp4v2::impl::itmf::EnumCountryCo
 ///////////////////////////////////////////////////////////////////////////////
 
 template <>
-const mp4v2::impl::itmf::EnumContentRating::Entry mp4v2::impl::itmf::EnumContentRating::data[] = {
+const itmf::EnumContentRating::Entry itmf::EnumContentRating::data[] = {
     { mp4v2::impl::itmf::CR_NONE,      "none",       "None" },
     { mp4v2::impl::itmf::CR_CLEAN,     "clean",      "Clean" },
     { mp4v2::impl::itmf::CR_EXPLICIT,  "explicit",   "Explicit" },
@@ -267,44 +259,42 @@ const mp4v2::impl::itmf::EnumContentRating::Entry mp4v2::impl::itmf::EnumContent
 
 ///////////////////////////////////////////////////////////////////////////////
 
-#if defined( _MSC_VER )
-namespace mp4v2 { namespace impl { namespace itmf {
-#endif
+namespace itmf {
 
 ///////////////////////////////////////////////////////////////////////////////
 
 // must come after static data init
-const mp4v2::impl::itmf::EnumBasicType enumBasicType;
-const mp4v2::impl::itmf::EnumGenreType enumGenreType;
-const mp4v2::impl::itmf::EnumStikType enumStikType;
-const mp4v2::impl::itmf::EnumAccountType enumAccountType;
-const mp4v2::impl::itmf::EnumCountryCode enumCountryCode;
-const mp4v2::impl::itmf::EnumContentRating enumContentRating;
+const EnumBasicType enumBasicType;
+const EnumGenreType enumGenreType;
+const EnumStikType enumStikType;
+const EnumAccountType enumAccountType;
+const EnumCountryCode enumCountryCode;
+const EnumContentRating enumContentRating;
 
 ///////////////////////////////////////////////////////////////////////////////
 
 namespace {
     struct ImageHeader {
-        mp4v2::impl::itmf::BasicType type;
+        BasicType type;
         string    data;
     };
 
     // POD static init does not need singletons
     static ImageHeader IMAGE_HEADERS[] = {
-        { mp4v2::impl::itmf::BT_BMP,  "\x4d\x42" },
-        { mp4v2::impl::itmf::BT_GIF,  "GIF87a" },
-        { mp4v2::impl::itmf::BT_GIF,  "GIF89a" },
-        { mp4v2::impl::itmf::BT_JPEG, "\xff\xd8\xff\xe0" },
-        { mp4v2::impl::itmf::BT_PNG,  "\x89\x50\x4e\x47\x0d\x0a\x1a\x0a" },
-        { mp4v2::impl::itmf::BT_UNDEFINED } // must be last
+        { BT_BMP,  "\x42\x4d" },
+        { BT_GIF,  "GIF87a" },
+        { BT_GIF,  "GIF89a" },
+        { BT_JPEG, "\xff\xd8\xff\xe0" },
+        { BT_PNG,  "\x89\x50\x4e\x47\x0d\x0a\x1a\x0a" },
+        { BT_UNDEFINED } // must be last
     };
 }
 
-mp4v2::impl::itmf::BasicType
+BasicType
 computeBasicType( const void* buffer, uint32_t size )
 {
     ImageHeader* found = NULL;
-    for( ImageHeader* p = IMAGE_HEADERS; p->type != mp4v2::impl::itmf::BT_UNDEFINED; p++ ) {
+    for( ImageHeader* p = IMAGE_HEADERS; p->type != BT_UNDEFINED; p++ ) {
         ImageHeader& h = *p;
 
         if( size < h.data.size() )
@@ -316,8 +306,9 @@ computeBasicType( const void* buffer, uint32_t size )
         }
     }
 
-    return found ? found->type : mp4v2::impl::itmf::BT_IMPLICIT;
+    return found ? found->type : BT_IMPLICIT;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
+}}} // namespace mp4v2::impl::itmf

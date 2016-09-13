@@ -1,4 +1,4 @@
-MP4v2 1.9.1 Building the Repository
+MP4v2 2.0.0 Building the Repository
 ***********************************
 
 Table of Contents
@@ -74,7 +74,7 @@ This chapter is for the impatient or those just looking for a quick
 summary of all the commands used in a typical build. You may skip this
 summary and jump to *note Build Process::.
 
-     svn checkout https://mp4v2.googlecode.com/svn/releases/1.9.1 mp4v2
+     svn checkout https://mp4v2.googlecode.com/svn/releases/2.0.0 mp4v2
      cd mp4v2
      autoreconf -fiv
      rm -fr build/
@@ -102,7 +102,7 @@ distribution which contains this document.
 If you are a project member, then you may add the appropriate
 login/password information as needed.
 
-     svn checkout https://mp4v2.googlecode.com/svn/releases/1.9.1 mp4v2
+     svn checkout https://mp4v2.googlecode.com/svn/releases/2.0.0 mp4v2
      cd mp4v2
 
 It is recommended to use Subversion 1.5.0 or higher.  Lower versions

@@ -143,7 +143,7 @@ TrackModifier::fromString( const string& src, bool& dst )
         if( iss.rdstate() != ios::eofbit ) {
             ostringstream oss;
             oss << "invalid value: " << src;
-            throw new MP4Exception( oss );
+            throw new Exception( oss.str(), __FILE__, __LINE__, __FUNCTION__ );
         }
     }
 
@@ -160,7 +160,7 @@ TrackModifier::fromString( const string& src, float& dst )
     if( iss.rdstate() != ios::eofbit ) {
         ostringstream oss;
         oss << "invalid value: " << src;
-        throw new MP4Exception( oss );
+        throw new Exception( oss.str(), __FILE__, __LINE__, __FUNCTION__ );
     }
 
     return dst;
@@ -176,7 +176,7 @@ TrackModifier::fromString( const string& src, uint16_t& dst )
     if( iss.rdstate() != ios::eofbit ) { 
         ostringstream oss;
         oss << "invalid value: " << src;
-        throw new MP4Exception( oss );
+        throw new Exception( oss.str(), __FILE__, __LINE__, __FUNCTION__ );
     }   
 
     return dst;
@@ -203,7 +203,7 @@ TrackModifier::refTrackAtom( MP4File& file, uint16_t index )
     if( !trak ) {
         oss.str( "" );
         oss << "trackIndex " << index << " not found";
-        throw new MP4Exception( oss );
+        throw new Exception( oss.str(), __FILE__, __LINE__, __FUNCTION__ );
     }
 
     return *trak;
@@ -357,7 +357,7 @@ TrackModifier::setUserDataName( const string& value )
         _props.update();
     }
 
-    _props.userDataName->SetValue( reinterpret_cast<const uint8_t*>(value.c_str()), value.size() );
+    _props.userDataName->SetValue( reinterpret_cast<const uint8_t*>(value.c_str()), (uint32_t)value.size() );
     fetch();
 }
 
@@ -474,7 +474,7 @@ TrackModifier::Properties::refProperty( const char* name )
     if( !_trackModifier._track.FindProperty( name, &property )) {
         ostringstream oss;
         oss << "trackId " << _trackModifier.trackId << " property '" << name << "' not found";
-        throw new MP4Exception( oss );
+        throw new Exception( oss.str(), __FILE__, __LINE__, __FUNCTION__ );
     }
 
     return *property;

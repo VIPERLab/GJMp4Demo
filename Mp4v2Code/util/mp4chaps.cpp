@@ -14,11 +14,13 @@
 // 
 //  The Initial Developer of the Original Code is Ullrich Pollaehne.
 //  Portions created by Kona Blend are Copyright (C) 2008.
+//  Portions created by David Byron are Copyright (C) 2010.
 //  All Rights Reserved.
 //
 //  Contributors:
 //      Kona Blend, kona8lend@@gmail.com
 //      Ullrich Pollaehne, u.pollaehne@@gmail.com
+//      David Byron, dbyron@dbyron.com
 //
 ///////////////////////////////////////////////////////////////////////////////
 #include "util/impl.h"
@@ -162,7 +164,7 @@ ChapterUtility::ChapterUtility( int argc, char** argv )
 bool
 ChapterUtility::actionList( JobContext& job )
 {
-    job.fileHandle = MP4Read( job.file.c_str(), _debugVerbosity );
+    job.fileHandle = MP4Read( job.file.c_str() );
     if( job.fileHandle == MP4_INVALID_FILE_HANDLE )
     {
         return herrf( "unable to open for read: %s\n", job.file.c_str() );
@@ -240,7 +242,7 @@ ChapterUtility::actionConvert( JobContext& job )
         return SUCCESS;
     }
 
-    job.fileHandle = MP4Modify( job.file.c_str(), _debugVerbosity );
+    job.fileHandle = MP4Modify( job.file.c_str() );
     if( job.fileHandle == MP4_INVALID_FILE_HANDLE )
     {
         return herrf( "unable to open for write: %s\n", job.file.c_str() );
@@ -280,7 +282,7 @@ ChapterUtility::actionEvery( JobContext& job )
         return SUCCESS;
     }
 
-    job.fileHandle = MP4Modify( job.file.c_str(), _debugVerbosity );
+    job.fileHandle = MP4Modify( job.file.c_str() );
     if( job.fileHandle == MP4_INVALID_FILE_HANDLE )
     {
         return herrf( "unable to open for write: %s\n", job.file.c_str() );
@@ -298,26 +300,22 @@ ChapterUtility::actionEvery( JobContext& job )
 
     Timecode chapterDuration( _ChaptersEvery * 1000, CHAPTERTIMESCALE );
     chapterDuration.setFormat( Timecode::DECIMAL );
-    Timecode durationSum( 0, CHAPTERTIMESCALE );
-    durationSum.setFormat( Timecode::DECIMAL );
     vector<MP4Chapter_t> chapters;
 
-    while( durationSum + chapterDuration < refTrackDuration )
+    do
     {
         MP4Chapter_t chap;
-        chap.duration = chapterDuration.duration;
-        sprintf(chap.title, "Chapter %lu", chapters.size()+1);
+        chap.duration = refTrackDuration.duration > chapterDuration.duration ? chapterDuration.duration : refTrackDuration.duration;
+        sprintf(chap.title, "Chapter %lu", (unsigned long)chapters.size()+1);
 
         chapters.push_back( chap );
-
-        durationSum += chapterDuration;
+        refTrackDuration -= chapterDuration;
     }
+    while( refTrackDuration.duration > 0 );
 
     if( 0 < chapters.size() )
     {
-        chapters.back().duration = (refTrackDuration - (durationSum - chapterDuration)).duration;
-
-        MP4SetChapters(job.fileHandle, &chapters[0], chapters.size(), _ChapterType);
+        MP4SetChapters(job.fileHandle, &chapters[0], (uint32_t)chapters.size(), _ChapterType);
     }
 
     fixQtScale( job.fileHandle );
@@ -337,7 +335,7 @@ ChapterUtility::actionEvery( JobContext& job )
 bool
 ChapterUtility::actionExport( JobContext& job )
 {
-    job.fileHandle = MP4Read( job.file.c_str(), _debugVerbosity );
+    job.fileHandle = MP4Read( job.file.c_str() );
     if( job.fileHandle == MP4_INVALID_FILE_HANDLE )
     {
         return herrf( "unable to open for read: %s\n", job.file.c_str() );
@@ -487,7 +485,7 @@ ChapterUtility::actionImport( JobContext& job )
         return herrf( "No chapters found in file %s\n", inName.c_str() );
     }
 
-    job.fileHandle = MP4Modify( job.file.c_str(), _debugVerbosity );
+    job.fileHandle = MP4Modify( job.file.c_str() );
     if( job.fileHandle == MP4_INVALID_FILE_HANDLE )
     {
         return herrf( "unable to open for write: %s\n", job.file.c_str() );
@@ -531,13 +529,13 @@ ChapterUtility::actionImport( JobContext& job )
     }
 
     // convert start time into duration
-    uint64_t framerate = CHAPTERTIMESCALE;
+	uint32_t framerate = static_cast<uint32_t>( CHAPTERTIMESCALE );
     if( Timecode::FRAME == format )
     {
         // get the framerate
         MP4SampleId sampleCount = MP4GetTrackNumberOfSamples( job.fileHandle, refTrackId );
         Timecode tmpcd( refTrackDuration.svalue, CHAPTERTIMESCALE );
-        framerate = std::ceil( ((double)sampleCount / (double)tmpcd.duration) * CHAPTERTIMESCALE );
+		framerate = static_cast<uint32_t>( std::ceil( ((double)sampleCount / (double)tmpcd.duration) * CHAPTERTIMESCALE ) );
     }
 
     for( vector<MP4Chapter_t>::iterator it = chapters.begin(); it != chapters.end(); ++it )
@@ -560,7 +558,7 @@ ChapterUtility::actionImport( JobContext& job )
     }
 
     // now set the chapters
-    MP4SetChapters( job.fileHandle, &chapters[0], chapters.size(), _ChapterType );
+    MP4SetChapters( job.fileHandle, &chapters[0], (uint32_t)chapters.size(), _ChapterType );
 
     fixQtScale( job.fileHandle );
     job.optimizeApplicable = true;
@@ -588,7 +586,7 @@ ChapterUtility::actionRemove( JobContext& job )
         return SUCCESS;
     }
 
-    job.fileHandle = MP4Modify( job.file.c_str(), _debugVerbosity );
+    job.fileHandle = MP4Modify( job.file.c_str() );
     if( job.fileHandle == MP4_INVALID_FILE_HANDLE )
     {
         return herrf( "unable to open for write: %s\n", job.file.c_str() );
@@ -735,7 +733,7 @@ void
 ChapterUtility::fixQtScale(MP4FileHandle file)
 {
     // get around a QuickTime/iPod issue with storing the number of samples in a signed 32Bit value
-    if( INT_MAX < (MP4GetDuration(file) * MP4GetTimeScale(file)) )
+    if( INT_MAX < MP4GetDuration(file))
     {
         bool isVideoTrack = false;
         if( MP4_IS_VALID_TRACK_ID(getReferencingTrack( file, isVideoTrack )) & isVideoTrack )
@@ -989,7 +987,7 @@ ChapterUtility::parseChapterFile( const string filename, vector<MP4Chapter_t>& c
                     titleStart++;
                 }
 
-                titleLen = strlen( titleStart );
+                titleLen = (uint32_t)strlen( titleStart );
 
                 // advance to the end of the line
                 pos = titleStart + 1 + titleLen;
@@ -1048,7 +1046,7 @@ ChapterUtility::parseChapterFile( const string filename, vector<MP4Chapter_t>& c
                                                                  : FMT_STATE_TITLE_LINE;
 
                 titleStart = equalsPos + 1;
-                titleLen = strlen( titleStart );
+                titleLen = (uint32_t)strlen( titleStart );
 
                 // advance to the end of the line
                 pos = titleStart + titleLen;

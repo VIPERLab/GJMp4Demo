@@ -14,10 +14,12 @@
 // 
 //  The Initial Developer of the Original Code is Kona Blend.
 //  Portions created by Kona Blend are Copyright (C) 2008.
+//  Portions created by David Byron are Copyright (C) 2010.
 //  All Rights Reserved.
 //
 //  Contributors:
 //      Kona Blend, kona8lend@@gmail.com
+//      David Byron, dbyron@dbyron.com
 //
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -144,7 +146,7 @@ ArtUtility::actionAdd( JobContext& job )
     if( dryrunAbort() )
         return SUCCESS;
 
-    job.fileHandle = MP4Modify( job.file.c_str(), _debugVerbosity );
+    job.fileHandle = MP4Modify( job.file.c_str() );
     if( job.fileHandle == MP4_INVALID_FILE_HANDLE )
         return herrf( "unable to open for write: %s\n", job.file.c_str() );
 
@@ -159,7 +161,7 @@ ArtUtility::actionAdd( JobContext& job )
 bool
 ArtUtility::actionExtract( JobContext& job )
 {
-    job.fileHandle = MP4Read( job.file.c_str(), _debugVerbosity );
+    job.fileHandle = MP4Read( job.file.c_str() );
     if( job.fileHandle == MP4_INVALID_FILE_HANDLE )
         return herrf( "unable to open for read: %s\n", job.file.c_str() );
 
@@ -180,7 +182,7 @@ ArtUtility::actionExtract( JobContext& job )
     bool onesuccess = false;
     const CoverArtBox::ItemList::size_type max = items.size();
     for( CoverArtBox::ItemList::size_type i = 0; i < max; i++ ) {
-        bool rv = extractSingle( job, items[i], i );
+        bool rv = extractSingle( job, items[i], (uint32_t)i );
         if( !rv )
             onesuccess = true;
         if( !_keepgoing && rv )
@@ -213,7 +215,7 @@ ArtUtility::actionList( JobContext& job )
         report << setfill('-') << setw(70) << "" << setfill(' ') << '\n';
     }
 
-    job.fileHandle = MP4Read( job.file.c_str(), _debugVerbosity );
+    job.fileHandle = MP4Read( job.file.c_str() );
     if( job.fileHandle == MP4_INVALID_FILE_HANDLE )
         return herrf( "unable to open for read: %s\n", job.file.c_str() );
 
@@ -250,7 +252,7 @@ ArtUtility::actionList( JobContext& job )
 bool
 ArtUtility::actionRemove( JobContext& job )
 {
-    job.fileHandle = MP4Modify( job.file.c_str(), _debugVerbosity );
+    job.fileHandle = MP4Modify( job.file.c_str() );
     if( job.fileHandle == MP4_INVALID_FILE_HANDLE )
         return herrf( "unable to open for write: %s\n", job.file.c_str() );
 
@@ -300,7 +302,7 @@ ArtUtility::actionReplace( JobContext& job )
     if( dryrunAbort() )
         return SUCCESS;
 
-    job.fileHandle = MP4Modify( job.file.c_str(), _debugVerbosity );
+    job.fileHandle = MP4Modify( job.file.c_str() );
     if( job.fileHandle == MP4_INVALID_FILE_HANDLE )
         return herrf( "unable to open for write: %s\n", job.file.c_str() );
 

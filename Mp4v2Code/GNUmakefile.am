@@ -6,7 +6,9 @@ check_PROGRAMS =
 
 ###############################################################################
 
-libmp4v2_la_LDFLAGS = -version-number $(PROJECT_version_major):$(PROJECT_version_minor):$(PROJECT_version_point) $(X_libmp4v2_la_LDFLAGS)
+libmp4v2_la_LDFLAGS = \
+    $(AM_LDFLAGS) \
+    -version-number $(PROJECT_version_major):$(PROJECT_version_minor):$(PROJECT_version_point) $(X_libmp4v2_la_LDFLAGS)
 
 libmp4v2_la_SOURCES = \
     src/3gp.cpp                          \
@@ -76,6 +78,8 @@ libmp4v2_la_SOURCES = \
     src/enum.tcc                         \
     src/impl.h                           \
     src/isma.cpp                         \
+    src/log.h                            \
+    src/log.cpp                          \
     src/mp4.cpp                          \
     src/mp4array.h                       \
     src/mp4atom.cpp                      \
@@ -84,12 +88,10 @@ libmp4v2_la_SOURCES = \
     src/mp4container.h                   \
     src/mp4descriptor.cpp                \
     src/mp4descriptor.h                  \
-    src/mp4error.h                       \
     src/mp4file.cpp                      \
     src/mp4file.h                        \
     src/mp4file_io.cpp                   \
     src/mp4info.cpp                      \
-    src/mp4meta.cpp                      \
     src/mp4property.cpp                  \
     src/mp4property.h                    \
     src/mp4track.cpp                     \
@@ -227,7 +229,7 @@ mp4trackdump_LDADD = libmp4v2.la $(X_LDFLAGS)
 
 DEJATOOL = main
 
-TESTLOGDIR = $(builddir)/testlog
+TESTLOGDIR = $(top_builddir)/testlog
 
 override RUNTESTDEFAULTFLAGS = --tool $$tool --srcdir $$srcdir/testsuite --outdir $(TESTLOGDIR)
 
@@ -245,7 +247,6 @@ mp4v2inc_HEADERS = \
     include/mp4v2/isma.h                        \
     include/mp4v2/itmf_generic.h                \
     include/mp4v2/itmf_tags.h                   \
-    include/mp4v2/meta.h                        \
     include/mp4v2/mp4v2.h                       \
     include/mp4v2/platform.h                    \
     include/mp4v2/sample.h                      \

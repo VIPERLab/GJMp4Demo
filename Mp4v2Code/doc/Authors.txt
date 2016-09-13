@@ -1,4 +1,4 @@
-MP4v2 1.9.1 Authors
+MP4v2 2.0.0 Authors
 *******************
 
 This document lists significant contributors to MP4v2. If any

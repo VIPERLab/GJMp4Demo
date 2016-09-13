@@ -3,87 +3,123 @@
  * License Version 1.1 (the "License"); you may not use this file
  * except in compliance with the License. You may obtain a copy of
  * the License at http://www.mozilla.org/MPL/
- * 
+ *
  * Software distributed under the License is distributed on an "AS
  * IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
  * implied. See the License for the specific language governing
  * rights and limitations under the License.
- * 
+ *
  * The Original Code is MPEG4IP.
- * 
+ *
  * The Initial Developer of the Original Code is Cisco Systems Inc.
  * Portions created by Cisco Systems Inc. are
  * Copyright (C) Cisco Systems Inc. 2001.  All Rights Reserved.
- * 
- * Contributor(s): 
- *		Dave Mackie		dmackie@cisco.com
+ *
+ * Contributor(s):
+ *      Dave Mackie     dmackie@cisco.com
  */
-
 
 #ifndef MP4V2_IMPL_MP4ARRAY_H
 #define MP4V2_IMPL_MP4ARRAY_H
 
-#include <vector>
-using namespace std;
+namespace mp4v2 {
+namespace impl {
 
-typedef uint32_t    MP4ArrayIndex;
+///////////////////////////////////////////////////////////////////////////////
 
-template<class T>
-class Array
-{
-    /* -----------------------------------------------------------------------------------------------------------------
-     ------------------------------------------------------------------------------------------------------------------- */
-    public:
-        inline MP4ArrayIndex Size(void)
-        {
-            return m_vector.size();
-        }
+typedef uint32_t MP4ArrayIndex;
 
-        inline void Add(T newElement)
-        {
-            m_vector.push_back(newElement);
-        }
+class MP4Array {
+public:
+    MP4Array() {
+        m_numElements = 0;
+        m_maxNumElements = 0;
+    }
 
-        inline void Insert(T newElement, MP4ArrayIndex newIndex)
-        {
-            if(newIndex > m_vector.size()) {
-                throw new mp4v2::impl::MP4Error(ERANGE, "MP4Array::Insert");
-            }
+    inline bool ValidIndex(MP4ArrayIndex index) {
+        return (index < m_numElements);
+    }
 
-            m_vector.insert(m_vector.begin() + newIndex, newElement);
-        }
+    inline MP4ArrayIndex Size(void) {
+        return m_numElements;
+    }
 
-        inline void Delete(MP4ArrayIndex index)
-        {
-            if(index >= m_vector.size()) {
-                throw new mp4v2::impl::MP4Error(ERANGE, "MP4Array::Delete");
-            }
+    inline MP4ArrayIndex MaxSize(void) {
+        return m_maxNumElements;
+    }
 
-            typename vector<T>::iterator    arrayIter = m_vector.begin() + index;
-            m_vector.erase(arrayIter);
-        }
-
-        inline void Resize(MP4ArrayIndex newSize)
-        {
-            m_vector.resize(newSize);
-        }
-
-        inline T &operator[](MP4ArrayIndex index)
-        {
-            if(index >= m_vector.size()) {
-                throw new mp4v2::impl::MP4Error(ERANGE, "index %u of %u", "MP4Array::[]", index, m_vector.size());
-            }
-
-            return m_vector[index];
-        }
-
-    /* -----------------------------------------------------------------------------------------------------------------
-     ------------------------------------------------------------------------------------------------------------------- */
-    protected:
-        vector<T>   m_vector;
+protected:
+    MP4ArrayIndex   m_numElements;
+    MP4ArrayIndex   m_maxNumElements;
 };
 
-#define MP4ARRAY_DECL(name, type)   typedef Array<type>  name##Array;
+// macro to generate subclasses
+// we use this as an alternative to templates
+// due to the excessive compile time price of extensive template usage
+
+#define MP4ARRAY_DECL(name, type) \
+    class name##Array : public MP4Array { \
+    public: \
+        name##Array() { \
+            m_elements = NULL; \
+        } \
+        \
+        ~name##Array() { \
+            MP4Free(m_elements); \
+        } \
+        \
+        inline void Add(type newElement) { \
+            Insert(newElement, m_numElements); \
+        } \
+        \
+        void Insert(type newElement, MP4ArrayIndex newIndex) { \
+            if (newIndex > m_numElements) { \
+                  throw new PlatformException("illegal array index", ERANGE, __FILE__, __LINE__, __FUNCTION__); \
+            } \
+            if (m_numElements == m_maxNumElements) { \
+                m_maxNumElements = max(m_maxNumElements, (MP4ArrayIndex)1) * 2; \
+                m_elements = (type*)MP4Realloc(m_elements, \
+                    m_maxNumElements * sizeof(type)); \
+            } \
+            memmove(&m_elements[newIndex + 1], &m_elements[newIndex], \
+                (m_numElements - newIndex) * sizeof(type)); \
+            m_elements[newIndex] = newElement; \
+            m_numElements++; \
+        } \
+        \
+        void Delete(MP4ArrayIndex index) { \
+            if (!ValidIndex(index)) { \
+                ostringstream msg; \
+                msg << "illegal array index: " << index << " of " << m_numElements; \
+                throw new PlatformException(msg.str().c_str(), ERANGE, __FILE__, __LINE__, __FUNCTION__); \
+            } \
+            m_numElements--; \
+            if (index < m_numElements) { \
+              memmove(&m_elements[index], &m_elements[index + 1], \
+                  (m_numElements - index) * sizeof(type)); \
+            } \
+        } \
+        void Resize(MP4ArrayIndex newSize) { \
+            m_numElements = newSize; \
+            m_maxNumElements = newSize; \
+            m_elements = (type*)MP4Realloc(m_elements, \
+                m_maxNumElements * sizeof(type)); \
+        } \
+        \
+        type& operator[](MP4ArrayIndex index) { \
+            if (ValidIndex(index)) { \
+                return m_elements[index]; \
+            } \
+            else { \
+                ostringstream msg; \
+                msg << "illegal array index: " << index << " of " << m_numElements; \
+                throw new PlatformException(msg.str().c_str(), ERANGE, __FILE__, __LINE__, __FUNCTION__ ); \
+            } \
+        } \
+        \
+    protected: \
+        type*   m_elements; \
+    };
 
 MP4ARRAY_DECL(MP4Integer8, uint8_t)
 
@@ -97,8 +133,13 @@ MP4ARRAY_DECL(MP4Float32, float)
 
 MP4ARRAY_DECL(MP4Float64, double)
 
-MP4ARRAY_DECL(MP4String, char *)
+MP4ARRAY_DECL(MP4String, char*)
 
-MP4ARRAY_DECL(MP4Bytes, uint8_t *)
+MP4ARRAY_DECL(MP4Bytes, uint8_t*)
 
-#endif /* MP4V2_IMPL_MP4ARRAY_H */
+///////////////////////////////////////////////////////////////////////////////
+
+}
+} // namespace mp4v2::impl
+
+#endif // MP4V2_IMPL_MP4ARRAY_H

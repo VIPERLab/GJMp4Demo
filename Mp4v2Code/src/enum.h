@@ -105,8 +105,9 @@ public:
 
 }} // namespace mp4v2::impl
 
-
-///enum.tcc begin
+//#include "enum.tcc"
+#pragma mark --include enum.tcc
+//begin enum.tcc
 ///////////////////////////////////////////////////////////////////////////////
 //
 //  The contents of this file are subject to the Mozilla Public License
@@ -229,6 +230,6 @@ namespace mp4v2 { namespace impl {
 
 #endif // MP4V2_IMPL_ENUM_TCC
 
-#include "enum.tcc"
+//end enum.tcc
 
 #endif // MP4V2_IMPL_ENUM_H
