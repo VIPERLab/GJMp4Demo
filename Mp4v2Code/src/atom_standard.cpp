@@ -178,7 +178,7 @@ MP4StandardAtom::MP4StandardAtom (MP4File &file, const char *type) : MP4Atom(fil
         ExpectChildAtom("soco", Optional, OnlyOne); /* sort composer */
         ExpectChildAtom("sosn", Optional, OnlyOne); /* sort show */
         ExpectChildAtom("hdvd", Optional, OnlyOne); /* HD video */
-        ExpectChildAtom("©enc", Optional, OnlyOne); /* Encoded by */
+        ExpectChildAtom("ï¿½enc", Optional, OnlyOne); /* Encoded by */
         ExpectChildAtom("pcst", Optional, OnlyOne); /* Podcast flag */
         ExpectChildAtom("keyw", Optional, OnlyOne); /* Keywords (for podcasts?) */
         ExpectChildAtom("catg", Optional, OnlyOne); /* Category (for podcasts?) */
@@ -396,12 +396,10 @@ MP4StandardAtom::MP4StandardAtom (MP4File &file, const char *type) : MP4Atom(fil
             new MP4Integer32Property(*this, "defaultSampleSize"));
         AddProperty( /* 6 */
             new MP4Integer32Property(*this, "defaultSampleFlags"));
-
     } else if (ATOMID(type) == ATOMID("trpy") ||
                ATOMID(type) == ATOMID("tpyl")) {
         AddProperty( // bytes sent including RTP headers
             new MP4Integer64Property(*this, "bytes"));
-
     } else if (ATOMID(type) == ATOMID("tsro")) {
         AddProperty(
             new MP4Integer32Property(*this, "offset"));

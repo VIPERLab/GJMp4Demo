@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C56C9D7D1D87CE1B0092E69D"
-               BuildableName = "libMp4v2Code.a"
-               BlueprintName = "Mp4v2Code"
+               BlueprintIdentifier = "C5E7F6A41D8E2EB60018CBC6"
+               BuildableName = "Mp4V2_Demo.app"
+               BlueprintName = "Mp4V2_Demo"
                ReferencedContainer = "container:Mp4v2Code.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,11 +29,20 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "C5E7F6A41D8E2EB60018CBC6"
+            BuildableName = "Mp4V2_Demo.app"
+            BlueprintName = "Mp4V2_Demo"
+            ReferencedContainer = "container:Mp4v2Code.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -42,15 +51,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C56C9D7D1D87CE1B0092E69D"
-            BuildableName = "libMp4v2Code.a"
-            BlueprintName = "Mp4v2Code"
+            BlueprintIdentifier = "C5E7F6A41D8E2EB60018CBC6"
+            BuildableName = "Mp4V2_Demo.app"
+            BlueprintName = "Mp4V2_Demo"
             ReferencedContainer = "container:Mp4v2Code.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -60,15 +70,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C56C9D7D1D87CE1B0092E69D"
-            BuildableName = "libMp4v2Code.a"
-            BlueprintName = "Mp4v2Code"
+            BlueprintIdentifier = "C5E7F6A41D8E2EB60018CBC6"
+            BuildableName = "Mp4V2_Demo.app"
+            BlueprintName = "Mp4V2_Demo"
             ReferencedContainer = "container:Mp4v2Code.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

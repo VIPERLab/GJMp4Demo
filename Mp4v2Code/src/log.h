@@ -41,7 +41,7 @@ public:
     const MP4LogLevel&          verbosity;
 
 public:
-    Log( MP4LogLevel = MP4_LOG_NONE );
+    Log( MP4LogLevel = MP4_LOG_VERBOSE4 );
     virtual ~Log();
 
     static void setLogCallback ( MP4LogCallback );
