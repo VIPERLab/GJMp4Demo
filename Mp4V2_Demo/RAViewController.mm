@@ -24,8 +24,8 @@
 
 #import "RATableViewCell.h"
 #import "mp4v2.h"
-
-
+#import "src.h"
+using namespace mp4v2::impl;
 @interface RAViewController () <RATreeViewDelegate, RATreeViewDataSource>
 
 @property (strong, nonatomic) NSArray *data;
@@ -40,8 +40,12 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
-  [self loadData];
+   dispatch_async(dispatch_get_global_queue(0, 0), ^{
+       [self loadData];
+       dispatch_async(dispatch_get_main_queue(), ^{
+           [self.treeView reloadData];
+       });
+   });
   
   RATreeView *treeView = [[RATreeView alloc] initWithFrame:self.view.bounds];
   treeView.delegate = self;
@@ -163,8 +167,8 @@
   RADataObject *dataObject = item;
   
   NSInteger level = [self.treeView levelForCellForItem:item];
-  NSInteger numberOfChildren = [dataObject.children count];
-  NSString *detailText = [NSString localizedStringWithFormat:@"Number of children %@", [@(numberOfChildren) stringValue]];
+  NSString *detailText = dataObject.property;
+  
   BOOL expanded = [self.treeView isCellForItemExpanded:item];
   
   RATableViewCell *cell = [self.treeView dequeueReusableCellWithIdentifier:NSStringFromClass([RATableViewCell class])];
@@ -209,19 +213,39 @@
 
 - (void)loadData
 {
-  RADataObject *phone1 = [RADataObject dataObjectWithName:@"Phone 1" children:nil];
-  RADataObject *phone2 = [RADataObject dataObjectWithName:@"Phone 2" children:nil];
-  RADataObject *phone3 = [RADataObject dataObjectWithName:@"Phone 3" children:nil];
-  RADataObject *phone4 = [RADataObject dataObjectWithName:@"Phone 4" children:nil];
+    NSMutableArray* data = [NSMutableArray arrayWithCapacity:4];
     NSString* sourcePath = [[NSBundle mainBundle]pathForResource:@"test" ofType:@"mp4"];
-   MP4FileHandle* fileHandle =  MP4Read(sourcePath.UTF8String);
+    MP4FileHandle fileHandle =  MP4Read(sourcePath.UTF8String);
+    MP4File* file = (MP4File*)fileHandle;
+    MP4Atom* superAtom = file->FindAtom(NULL);
     
+    [self loadAtomWith:superAtom superData:nil data:data];
+    self.data = data;
     
+
 //    NSFileHandle * handle = [NSFileHandle fileHandleForReadingAtPath:sourcePath];
 //    NSData* data = [handle readDataToEndOfFile];
 //    
   
 //    self.data = [NSArray arrayWithObjects:phone, computer, car, bike, house, flats, motorbike, drinks, food, sweets, watches, walls, nil];
 }
-
+-(void)loadAtomWith:(MP4Atom*)superAtom superData:(RADataObject*)superData data:(NSMutableArray*)data{
+    for (int j = 0; j< superAtom->GetNumberOfChildAtoms(); j++) {
+        MP4Atom* currentAtom = superAtom->GetChildAtom(j);
+        NSString* name = [NSString stringWithFormat:@"%s",currentAtom->GetType()];
+        NSString* propertystr ;
+        for (int i = 0; i<currentAtom->GetCount(); i++) {
+            MP4Property* property = currentAtom->GetProperty(i);
+            propertystr = [NSString stringWithFormat:@"%@ -- %s",propertystr,property->GetName()];
+        }
+        RADataObject *current = [RADataObject dataObjectWithName:name children:nil];
+        current.property = propertystr;
+        if (superData) {
+            [superData addChild:current];
+        }else{
+            [data addObject:current];
+        }
+        [self loadAtomWith:currentAtom superData:current data:data];
+    }
+}
 @end

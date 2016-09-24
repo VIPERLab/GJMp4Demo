@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE95E68D1D9626FF0096CF00 /* chapter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA1591D87F1A50092E69D /* chapter.h */; };
+		AE95E68E1D9626FF0096CF00 /* file.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA15A1D87F1A50092E69D /* file.h */; };
+		AE95E68F1D9626FF0096CF00 /* file_prop.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA15B1D87F1A50092E69D /* file_prop.h */; };
+		AE95E6901D9626FF0096CF00 /* general.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA15C1D87F1A50092E69D /* general.h */; };
+		AE95E6911D9626FF0096CF00 /* isma.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA15D1D87F1A50092E69D /* isma.h */; };
+		AE95E6921D9626FF0096CF00 /* itmf_generic.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA15E1D87F1A50092E69D /* itmf_generic.h */; };
+		AE95E6931D9626FF0096CF00 /* itmf_tags.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA15F1D87F1A50092E69D /* itmf_tags.h */; };
+		AE95E6941D9626FF0096CF00 /* mp4v2.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA1601D87F1A50092E69D /* mp4v2.h */; };
+		AE95E6951D9626FF0096CF00 /* platform.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA1611D87F1A50092E69D /* platform.h */; };
+		AE95E6961D9626FF0096CF00 /* project.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA1621D87F1A50092E69D /* project.h */; };
+		AE95E6971D9626FF0096CF00 /* sample.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA1641D87F1A50092E69D /* sample.h */; };
+		AE95E6981D9626FF0096CF00 /* streaming.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA1651D87F1A50092E69D /* streaming.h */; };
+		AE95E6991D9626FF0096CF00 /* track.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA1661D87F1A50092E69D /* track.h */; };
+		AE95E69A1D9626FF0096CF00 /* track_prop.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA1671D87F1A50092E69D /* track_prop.h */; };
+		AE95E69B1D9627150096CF00 /* mp4atom.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA0DD1D87F1980092E69D /* mp4atom.h */; };
+		AE95E6BC1D9660F50096CF00 /* mp4_internal_api.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE95E69D1D962C550096CF00 /* mp4_internal_api.cpp */; };
 		C5333F8B1D8E6D2D0060B801 /* RABatchChangeEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C5333F6D1D8E6D2D0060B801 /* RABatchChangeEntity.m */; };
 		C5333F8C1D8E6D2D0060B801 /* RABatchChanges.m in Sources */ = {isa = PBXBuildFile; fileRef = C5333F6F1D8E6D2D0060B801 /* RABatchChanges.m */; };
 		C5333F8D1D8E6D2D0060B801 /* RATableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5333F711D8E6D2D0060B801 /* RATableView.m */; };
@@ -24,7 +40,7 @@
 		C5333FA91D8E71260060B801 /* RADataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C5333FA31D8E71260060B801 /* RADataObject.m */; };
 		C5333FAA1D8E71260060B801 /* RATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5333FA51D8E71260060B801 /* RATableViewCell.m */; };
 		C5333FAB1D8E71260060B801 /* RATableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5333FA61D8E71260060B801 /* RATableViewCell.xib */; };
-		C5333FAC1D8E71260060B801 /* RAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5333FA81D8E71260060B801 /* RAViewController.m */; };
+		C5333FAC1D8E71260060B801 /* RAViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C5333FA81D8E71260060B801 /* RAViewController.mm */; };
 		C56CA0601D87F1890092E69D /* File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0401D87F1890092E69D /* File.cpp */; };
 		C56CA0611D87F1890092E69D /* File_posix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0421D87F1890092E69D /* File_posix.cpp */; };
 		C56CA0631D87F1890092E69D /* FileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0441D87F1890092E69D /* FileSystem.cpp */; };
@@ -145,12 +161,29 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				AE95E69B1D9627150096CF00 /* mp4atom.h in CopyFiles */,
+				AE95E68D1D9626FF0096CF00 /* chapter.h in CopyFiles */,
+				AE95E68E1D9626FF0096CF00 /* file.h in CopyFiles */,
+				AE95E68F1D9626FF0096CF00 /* file_prop.h in CopyFiles */,
+				AE95E6901D9626FF0096CF00 /* general.h in CopyFiles */,
+				AE95E6911D9626FF0096CF00 /* isma.h in CopyFiles */,
+				AE95E6921D9626FF0096CF00 /* itmf_generic.h in CopyFiles */,
+				AE95E6931D9626FF0096CF00 /* itmf_tags.h in CopyFiles */,
+				AE95E6941D9626FF0096CF00 /* mp4v2.h in CopyFiles */,
+				AE95E6951D9626FF0096CF00 /* platform.h in CopyFiles */,
+				AE95E6961D9626FF0096CF00 /* project.h in CopyFiles */,
+				AE95E6971D9626FF0096CF00 /* sample.h in CopyFiles */,
+				AE95E6981D9626FF0096CF00 /* streaming.h in CopyFiles */,
+				AE95E6991D9626FF0096CF00 /* track.h in CopyFiles */,
+				AE95E69A1D9626FF0096CF00 /* track_prop.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AE95E69C1D962C550096CF00 /* mp4_internal_api.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = mp4_internal_api.h; sourceTree = "<group>"; };
+		AE95E69D1D962C550096CF00 /* mp4_internal_api.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp4_internal_api.cpp; sourceTree = "<group>"; };
 		C5333F6C1D8E6D2D0060B801 /* RABatchChangeEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RABatchChangeEntity.h; sourceTree = "<group>"; };
 		C5333F6D1D8E6D2D0060B801 /* RABatchChangeEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RABatchChangeEntity.m; sourceTree = "<group>"; };
 		C5333F6E1D8E6D2D0060B801 /* RABatchChanges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RABatchChanges.h; sourceTree = "<group>"; };
@@ -188,7 +221,7 @@
 		C5333FA51D8E71260060B801 /* RATableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RATableViewCell.m; sourceTree = "<group>"; };
 		C5333FA61D8E71260060B801 /* RATableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RATableViewCell.xib; sourceTree = "<group>"; };
 		C5333FA71D8E71260060B801 /* RAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAViewController.h; sourceTree = "<group>"; };
-		C5333FA81D8E71260060B801 /* RAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAViewController.m; sourceTree = "<group>"; };
+		C5333FA81D8E71260060B801 /* RAViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RAViewController.mm; sourceTree = "<group>"; };
 		C56C9D7E1D87CE1B0092E69D /* libMp4v2Code.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMp4v2Code.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56CA03C1D87F1890092E69D /* config.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.h.in; sourceTree = "<group>"; };
 		C56CA03D1D87F1890092E69D /* endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = endian.h; sourceTree = "<group>"; };
@@ -321,7 +354,7 @@
 		C56CA0E01D87F1980092E69D /* mp4descriptor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp4descriptor.cpp; sourceTree = "<group>"; };
 		C56CA0E11D87F1980092E69D /* mp4descriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mp4descriptor.h; sourceTree = "<group>"; };
 		C56CA0E21D87F1980092E69D /* mp4file.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp4file.cpp; sourceTree = "<group>"; };
-		C56CA0E31D87F1980092E69D /* mp4file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mp4file.h; sourceTree = "<group>"; };
+		C56CA0E31D87F1980092E69D /* mp4file.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = mp4file.h; sourceTree = "<group>"; };
 		C56CA0E41D87F1980092E69D /* mp4file_io.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp4file_io.cpp; sourceTree = "<group>"; };
 		C56CA0E51D87F1980092E69D /* mp4info.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp4info.cpp; sourceTree = "<group>"; };
 		C56CA0E61D87F1980092E69D /* mp4property.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp4property.cpp; sourceTree = "<group>"; };
@@ -732,6 +765,8 @@
 			isa = PBXGroup;
 			children = (
 				C56CA1581D87F1A50092E69D /* mp4v2 */,
+				AE95E69C1D962C550096CF00 /* mp4_internal_api.h */,
+				AE95E69D1D962C550096CF00 /* mp4_internal_api.cpp */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -770,7 +805,7 @@
 				C5333FA51D8E71260060B801 /* RATableViewCell.m */,
 				C5333FA61D8E71260060B801 /* RATableViewCell.xib */,
 				C5333FA71D8E71260060B801 /* RAViewController.h */,
-				C5333FA81D8E71260060B801 /* RAViewController.m */,
+				C5333FA81D8E71260060B801 /* RAViewController.mm */,
 				C5E7F6B01D8E2EB70018CBC6 /* Main.storyboard */,
 				C5E7F6B31D8E2EB70018CBC6 /* Assets.xcassets */,
 				C5E7F6B51D8E2EB70018CBC6 /* LaunchScreen.storyboard */,
@@ -957,6 +992,7 @@
 				C56CA1451D87F1980092E69D /* mp4.cpp in Sources */,
 				C56CA11D1D87F1980092E69D /* atom_nmhd.cpp in Sources */,
 				C56CA14A1D87F1980092E69D /* mp4file_io.cpp in Sources */,
+				AE95E6BC1D9660F50096CF00 /* mp4_internal_api.cpp in Sources */,
 				C56CA0601D87F1890092E69D /* File.cpp in Sources */,
 				C56CA1121D87F1980092E69D /* atom_gmin.cpp in Sources */,
 				C56CA13D1D87F1980092E69D /* enum.tcc in Sources */,
@@ -1010,7 +1046,7 @@
 				C5E7F6A91D8E2EB70018CBC6 /* main.m in Sources */,
 				C5333FAA1D8E71260060B801 /* RATableViewCell.m in Sources */,
 				C5333F8E1D8E6D2D0060B801 /* RATreeNode.m in Sources */,
-				C5333FAC1D8E71260060B801 /* RAViewController.m in Sources */,
+				C5333FAC1D8E71260060B801 /* RAViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1164,6 +1200,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_INPUT_FILETYPE = automatic;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Mp4v2Code/include\"",
+					"\"$(SRCROOT)/Mp4v2Code\"",
+				);
 				INFOPLIST_FILE = Mp4V2_Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "--.Mp4V2-Demo";
@@ -1175,6 +1216,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_INPUT_FILETYPE = automatic;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Mp4v2Code/include\"",
+					"\"$(SRCROOT)/Mp4v2Code\"",
+				);
 				INFOPLIST_FILE = Mp4V2_Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "--.Mp4V2-Demo";

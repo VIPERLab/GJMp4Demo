@@ -24,6 +24,7 @@
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSArray *children;
+@property (strong, nonatomic) NSString *property;
 
 - (id)initWithName:(NSString *)name children:(NSArray *)array;
 
