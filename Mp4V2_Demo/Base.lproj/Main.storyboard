@@ -36,9 +36,16 @@
                                     <action selector="playOrStop:" destination="noG-Kv-AO4" eventType="touchUpInside" id="QX1-Pu-qqu"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJk-FQ-p9Y">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="UJk-FQ-p9Y" firstAttribute="top" secondItem="MW9-MT-CLC" secondAttribute="bottom" constant="24" id="2Vz-Ua-bYN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UJk-FQ-p9Y" secondAttribute="trailing" constant="80" id="51u-xp-nnj"/>
                             <constraint firstItem="MW9-MT-CLC" firstAttribute="top" secondItem="bln-PI-fR1" secondAttribute="bottom" id="5YV-sA-WMf"/>
                             <constraint firstItem="cPo-1L-C8l" firstAttribute="top" secondItem="tts-qi-vFm" secondAttribute="bottom" constant="71" id="DI3-Ij-vv8"/>
                             <constraint firstItem="MW9-MT-CLC" firstAttribute="leading" secondItem="n9y-s1-e2r" secondAttribute="leadingMargin" id="DcG-yR-Cdm"/>
@@ -46,12 +53,18 @@
                             <constraint firstItem="tts-qi-vFm" firstAttribute="leading" secondItem="n9y-s1-e2r" secondAttribute="leadingMargin" constant="22" id="SpJ-eK-uTK"/>
                             <constraint firstItem="cPo-1L-C8l" firstAttribute="top" secondItem="QNZ-Ed-RlW" secondAttribute="bottom" constant="71" id="WVX-MD-gv9"/>
                             <constraint firstItem="cPo-1L-C8l" firstAttribute="top" secondItem="MW9-MT-CLC" secondAttribute="bottom" constant="200" id="c6r-nn-EZz"/>
+                            <constraint firstItem="UJk-FQ-p9Y" firstAttribute="leading" secondItem="n9y-s1-e2r" secondAttribute="leadingMargin" constant="22" id="dsi-Ir-I4c"/>
+                            <constraint firstItem="QNZ-Ed-RlW" firstAttribute="top" secondItem="UJk-FQ-p9Y" secondAttribute="bottom" constant="29" id="eqg-Im-ul7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QNZ-Ed-RlW" secondAttribute="trailing" constant="127" id="jQd-oQ-G7V"/>
                             <constraint firstItem="QNZ-Ed-RlW" firstAttribute="top" secondItem="MW9-MT-CLC" secondAttribute="bottom" constant="99" id="lHH-6q-NIk"/>
                             <constraint firstItem="tts-qi-vFm" firstAttribute="top" secondItem="MW9-MT-CLC" secondAttribute="bottom" constant="99" id="mHh-Bv-X3I"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MW9-MT-CLC" secondAttribute="trailing" id="sCI-rB-bpv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descLab" destination="UJk-FQ-p9Y" id="pj2-ad-kwf"/>
+                        <outlet property="imageView" destination="MW9-MT-CLC" id="G4q-Tn-pGK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ldk-Ta-iTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
