@@ -167,7 +167,7 @@ using namespace mp4v2::impl;
   RADataObject *dataObject = item;
   
   NSInteger level = [self.treeView levelForCellForItem:item];
-  NSString *detailText = dataObject.property;
+  NSString *detailText = [NSString stringWithFormat:@"number of children:%d  %@",dataObject.children.count, dataObject.property];
   
   BOOL expanded = [self.treeView isCellForItemExpanded:item];
   
@@ -214,11 +214,9 @@ using namespace mp4v2::impl;
 - (void)loadData
 {
     NSMutableArray* data = [NSMutableArray arrayWithCapacity:4];
-    NSString* sourcePath = [[NSBundle mainBundle]pathForResource:@"test" ofType:@"mp4"];
-    MP4FileHandle fileHandle =  MP4Read(sourcePath.UTF8String);
-    MP4File* file = (MP4File*)fileHandle;
+   
+    MP4File* file = (MP4File*)_fileHandle;
     MP4Atom* superAtom = file->FindAtom(NULL);
-    
     [self loadAtomWith:superAtom superData:nil data:data];
     self.data = data;
     

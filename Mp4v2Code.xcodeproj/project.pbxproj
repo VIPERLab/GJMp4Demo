@@ -22,7 +22,11 @@
 		AE95E6991D9626FF0096CF00 /* track.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA1661D87F1A50092E69D /* track.h */; };
 		AE95E69A1D9626FF0096CF00 /* track_prop.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA1671D87F1A50092E69D /* track_prop.h */; };
 		AE95E69B1D9627150096CF00 /* mp4atom.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA0DD1D87F1980092E69D /* mp4atom.h */; };
-		AE95E6BC1D9660F50096CF00 /* mp4_internal_api.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE95E69D1D962C550096CF00 /* mp4_internal_api.cpp */; };
+		AE95E6BF1D96BAE90096CF00 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE95E6BE1D96BAE90096CF00 /* ViewController.mm */; };
+		AE95E6CB1D97F2780096CF00 /* error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0581D87F1890092E69D /* error.cpp */; };
+		AE95E6CC1D97F2850096CF00 /* time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA05B1D87F1890092E69D /* time.cpp */; };
+		AE95E6CD1D97F28B0096CF00 /* time_posix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA05D1D87F1890092E69D /* time_posix.cpp */; };
+		AE95E6CE1D97F7F80096CF00 /* src.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA0FD1D87F1980092E69D /* src.h */; };
 		C5333F8B1D8E6D2D0060B801 /* RABatchChangeEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C5333F6D1D8E6D2D0060B801 /* RABatchChangeEntity.m */; };
 		C5333F8C1D8E6D2D0060B801 /* RABatchChanges.m in Sources */ = {isa = PBXBuildFile; fileRef = C5333F6F1D8E6D2D0060B801 /* RABatchChanges.m */; };
 		C5333F8D1D8E6D2D0060B801 /* RATableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5333F711D8E6D2D0060B801 /* RATableView.m */; };
@@ -46,18 +50,6 @@
 		C56CA0631D87F1890092E69D /* FileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0441D87F1890092E69D /* FileSystem.cpp */; };
 		C56CA0641D87F1890092E69D /* FileSystem_posix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0461D87F1890092E69D /* FileSystem_posix.cpp */; };
 		C56CA0661D87F1890092E69D /* random_posix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA04A1D87F1890092E69D /* random_posix.cpp */; };
-		C56CA0671D87F1890092E69D /* random_win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA04B1D87F1890092E69D /* random_win32.cpp */; };
-		C56CA0681D87F1890092E69D /* process_posix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0521D87F1890092E69D /* process_posix.cpp */; };
-		C56CA06A1D87F1890092E69D /* option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0551D87F1890092E69D /* option.cpp */; };
-		C56CA06B1D87F1890092E69D /* error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0581D87F1890092E69D /* error.cpp */; };
-		C56CA06C1D87F1890092E69D /* time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA05B1D87F1890092E69D /* time.cpp */; };
-		C56CA06D1D87F1890092E69D /* time_posix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA05D1D87F1890092E69D /* time_posix.cpp */; };
-		C56CA07E1D87F1900092E69D /* crc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0701D87F1900092E69D /* crc.cpp */; };
-		C56CA07F1D87F1900092E69D /* Database.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0721D87F1900092E69D /* Database.cpp */; };
-		C56CA0801D87F1900092E69D /* other.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0751D87F1900092E69D /* other.cpp */; };
-		C56CA0811D87F1900092E69D /* Timecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0771D87F1900092E69D /* Timecode.cpp */; };
-		C56CA0821D87F1900092E69D /* TrackModifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0791D87F1900092E69D /* TrackModifier.cpp */; };
-		C56CA0831D87F1900092E69D /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA07C1D87F1900092E69D /* Utility.cpp */; };
 		C56CA1011D87F1980092E69D /* 3gp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0851D87F1970092E69D /* 3gp.cpp */; };
 		C56CA1021D87F1980092E69D /* atom_ac3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0861D87F1970092E69D /* atom_ac3.cpp */; };
 		C56CA1031D87F1980092E69D /* atom_amr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0871D87F1970092E69D /* atom_amr.cpp */; };
@@ -161,6 +153,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				AE95E6CE1D97F7F80096CF00 /* src.h in CopyFiles */,
 				AE95E69B1D9627150096CF00 /* mp4atom.h in CopyFiles */,
 				AE95E68D1D9626FF0096CF00 /* chapter.h in CopyFiles */,
 				AE95E68E1D9626FF0096CF00 /* file.h in CopyFiles */,
@@ -182,8 +175,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		AE95E69C1D962C550096CF00 /* mp4_internal_api.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = mp4_internal_api.h; sourceTree = "<group>"; };
-		AE95E69D1D962C550096CF00 /* mp4_internal_api.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp4_internal_api.cpp; sourceTree = "<group>"; };
+		AE95E6BD1D96BAE90096CF00 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AE95E6BE1D96BAE90096CF00 /* ViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = ViewController.mm; sourceTree = "<group>"; };
+		AE95E6C11D97E23A0096CF00 /* impl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = impl.h; sourceTree = "<group>"; };
+		AE95E6C21D97E23A0096CF00 /* mp4art.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mp4art.cpp; sourceTree = "<group>"; };
+		AE95E6C31D97E23A0096CF00 /* mp4chaps.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mp4chaps.cpp; sourceTree = "<group>"; };
+		AE95E6C41D97E23A0096CF00 /* mp4extract.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mp4extract.cpp; sourceTree = "<group>"; };
+		AE95E6C51D97E23A0096CF00 /* mp4file.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mp4file.cpp; sourceTree = "<group>"; };
+		AE95E6C61D97E23A0096CF00 /* mp4info.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mp4info.cpp; sourceTree = "<group>"; };
+		AE95E6C71D97E23A0096CF00 /* mp4subtitle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mp4subtitle.cpp; sourceTree = "<group>"; };
+		AE95E6C81D97E23A0096CF00 /* mp4tags.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mp4tags.cpp; sourceTree = "<group>"; };
+		AE95E6C91D97E23A0096CF00 /* mp4track.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mp4track.cpp; sourceTree = "<group>"; };
+		AE95E6CA1D97E23A0096CF00 /* mp4trackdump.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mp4trackdump.cpp; sourceTree = "<group>"; };
 		C5333F6C1D8E6D2D0060B801 /* RABatchChangeEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RABatchChangeEntity.h; sourceTree = "<group>"; };
 		C5333F6D1D8E6D2D0060B801 /* RABatchChangeEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RABatchChangeEntity.m; sourceTree = "<group>"; };
 		C5333F6E1D8E6D2D0060B801 /* RABatchChanges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RABatchChanges.h; sourceTree = "<group>"; };
@@ -431,6 +434,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE95E6C01D97E23A0096CF00 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				AE95E6C11D97E23A0096CF00 /* impl.h */,
+				AE95E6C21D97E23A0096CF00 /* mp4art.cpp */,
+				AE95E6C31D97E23A0096CF00 /* mp4chaps.cpp */,
+				AE95E6C41D97E23A0096CF00 /* mp4extract.cpp */,
+				AE95E6C51D97E23A0096CF00 /* mp4file.cpp */,
+				AE95E6C61D97E23A0096CF00 /* mp4info.cpp */,
+				AE95E6C71D97E23A0096CF00 /* mp4subtitle.cpp */,
+				AE95E6C81D97E23A0096CF00 /* mp4tags.cpp */,
+				AE95E6C91D97E23A0096CF00 /* mp4track.cpp */,
+				AE95E6CA1D97E23A0096CF00 /* mp4trackdump.cpp */,
+			);
+			name = util;
+			path = Mp4v2Code/util;
+			sourceTree = "<group>";
+		};
 		C5333F6A1D8E6D2D0060B801 /* RATreeView */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,6 +504,7 @@
 				C5E7F6BF1D8E31340018CBC6 /* libstdc++.tbd */,
 				C56C9D801D87CE1B0092E69D /* Mp4v2Code */,
 				C5E7F6A61D8E2EB70018CBC6 /* Mp4V2_Demo */,
+				AE95E6C01D97E23A0096CF00 /* util */,
 				C56C9D7F1D87CE1B0092E69D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -514,8 +536,8 @@
 				C56CA03C1D87F1890092E69D /* config.h.in */,
 				C56CA03D1D87F1890092E69D /* endian.h */,
 				C56CA03E1D87F1890092E69D /* impl.h */,
-				C56CA03F1D87F1890092E69D /* io */,
 				C56CA0481D87F1890092E69D /* number */,
+				C56CA03F1D87F1890092E69D /* io */,
 				C56CA04C1D87F1890092E69D /* platform.h */,
 				C56CA04D1D87F1890092E69D /* platform_base.h */,
 				C56CA04E1D87F1890092E69D /* platform_posix.h */,
@@ -765,8 +787,6 @@
 			isa = PBXGroup;
 			children = (
 				C56CA1581D87F1A50092E69D /* mp4v2 */,
-				AE95E69C1D962C550096CF00 /* mp4_internal_api.h */,
-				AE95E69D1D962C550096CF00 /* mp4_internal_api.cpp */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -806,6 +826,8 @@
 				C5333FA61D8E71260060B801 /* RATableViewCell.xib */,
 				C5333FA71D8E71260060B801 /* RAViewController.h */,
 				C5333FA81D8E71260060B801 /* RAViewController.mm */,
+				AE95E6BD1D96BAE90096CF00 /* ViewController.h */,
+				AE95E6BE1D96BAE90096CF00 /* ViewController.mm */,
 				C5E7F6B01D8E2EB70018CBC6 /* Main.storyboard */,
 				C5E7F6B31D8E2EB70018CBC6 /* Assets.xcassets */,
 				C5E7F6B51D8E2EB70018CBC6 /* LaunchScreen.storyboard */,
@@ -923,9 +945,7 @@
 				C56CA1161D87F1980092E69D /* atom_href.cpp in Sources */,
 				C56CA14F1D87F1980092E69D /* ocidescriptors.cpp in Sources */,
 				C56CA13B1D87F1980092E69D /* cmeta.cpp in Sources */,
-				C56CA0831D87F1900092E69D /* Utility.cpp in Sources */,
 				C56CA12A1D87F1980092E69D /* atom_stsc.cpp in Sources */,
-				C56CA07E1D87F1900092E69D /* crc.cpp in Sources */,
 				C56CA1541D87F1980092E69D /* PictureAspectRatioBox.cpp in Sources */,
 				C56CA1291D87F1980092E69D /* atom_stdp.cpp in Sources */,
 				C56CA1011D87F1980092E69D /* 3gp.cpp in Sources */,
@@ -942,24 +962,21 @@
 				C56CA1211D87F1980092E69D /* atom_rtp.cpp in Sources */,
 				C56CA1041D87F1980092E69D /* atom_avc1.cpp in Sources */,
 				C56CA1401D87F1980092E69D /* CoverArtBox.cpp in Sources */,
-				C56CA07F1D87F1900092E69D /* Database.cpp in Sources */,
 				C56CA1511D87F1980092E69D /* qosqualifiers.cpp in Sources */,
 				C56CA1441D87F1980092E69D /* log.cpp in Sources */,
 				C56CA14B1D87F1980092E69D /* mp4info.cpp in Sources */,
 				C56CA1101D87F1980092E69D /* atom_ftab.cpp in Sources */,
 				C56CA0631D87F1890092E69D /* FileSystem.cpp in Sources */,
 				C56CA10C1D87F1980092E69D /* atom_elst.cpp in Sources */,
+				AE95E6CB1D97F2780096CF00 /* error.cpp in Sources */,
 				C56CA1361D87F1980092E69D /* atom_urn.cpp in Sources */,
 				C56CA1411D87F1980092E69D /* generic.cpp in Sources */,
 				C56CA1051D87F1980092E69D /* atom_avcC.cpp in Sources */,
 				C56CA1481D87F1980092E69D /* mp4descriptor.cpp in Sources */,
-				C56CA0821D87F1900092E69D /* TrackModifier.cpp in Sources */,
 				C56CA1201D87F1980092E69D /* atom_root.cpp in Sources */,
 				C56CA1241D87F1980092E69D /* atom_sdtp.cpp in Sources */,
 				C56CA14D1D87F1980092E69D /* mp4track.cpp in Sources */,
 				C56CA1251D87F1980092E69D /* atom_smi.cpp in Sources */,
-				C56CA06A1D87F1890092E69D /* option.cpp in Sources */,
-				C56CA0681D87F1890092E69D /* process_posix.cpp in Sources */,
 				C56CA13F1D87F1980092E69D /* isma.cpp in Sources */,
 				C56CA11A1D87F1980092E69D /* atom_mp4s.cpp in Sources */,
 				C56CA1141D87F1980092E69D /* atom_hinf.cpp in Sources */,
@@ -983,22 +1000,18 @@
 				C56CA1091D87F1980092E69D /* atom_dac3.cpp in Sources */,
 				C56CA1081D87F1980092E69D /* atom_d263.cpp in Sources */,
 				C56CA1551D87F1980092E69D /* rtphint.cpp in Sources */,
-				C56CA0671D87F1890092E69D /* random_win32.cpp in Sources */,
-				C56CA06B1D87F1890092E69D /* error.cpp in Sources */,
 				C56CA12E1D87F1980092E69D /* atom_text.cpp in Sources */,
 				C56CA1521D87F1980092E69D /* coding.cpp in Sources */,
 				C56CA1191D87F1980092E69D /* atom_meta.cpp in Sources */,
-				C56CA06C1D87F1890092E69D /* time.cpp in Sources */,
 				C56CA1451D87F1980092E69D /* mp4.cpp in Sources */,
 				C56CA11D1D87F1980092E69D /* atom_nmhd.cpp in Sources */,
 				C56CA14A1D87F1980092E69D /* mp4file_io.cpp in Sources */,
-				AE95E6BC1D9660F50096CF00 /* mp4_internal_api.cpp in Sources */,
 				C56CA0601D87F1890092E69D /* File.cpp in Sources */,
 				C56CA1121D87F1980092E69D /* atom_gmin.cpp in Sources */,
+				AE95E6CD1D97F28B0096CF00 /* time_posix.cpp in Sources */,
 				C56CA13D1D87F1980092E69D /* enum.tcc in Sources */,
 				C56CA10D1D87F1980092E69D /* atom_enca.cpp in Sources */,
 				C56CA11F1D87F1980092E69D /* atom_pasp.cpp in Sources */,
-				C56CA06D1D87F1890092E69D /* time_posix.cpp in Sources */,
 				C56CA1221D87F1980092E69D /* atom_s263.cpp in Sources */,
 				C56CA1131D87F1980092E69D /* atom_hdlr.cpp in Sources */,
 				C56CA1311D87F1980092E69D /* atom_treftype.cpp in Sources */,
@@ -1006,10 +1019,10 @@
 				C56CA11B1D87F1980092E69D /* atom_mp4v.cpp in Sources */,
 				C56CA1071D87F1980092E69D /* atom_colr.cpp in Sources */,
 				C56CA14C1D87F1980092E69D /* mp4property.cpp in Sources */,
-				C56CA0811D87F1900092E69D /* Timecode.cpp in Sources */,
 				C56CA1471D87F1980092E69D /* mp4container.cpp in Sources */,
 				C56CA1181D87F1980092E69D /* atom_mdhd.cpp in Sources */,
 				C56CA1031D87F1980092E69D /* atom_amr.cpp in Sources */,
+				AE95E6CC1D97F2850096CF00 /* time.cpp in Sources */,
 				C56CA1151D87F1980092E69D /* atom_hnti.cpp in Sources */,
 				C56CA10F1D87F1980092E69D /* atom_free.cpp in Sources */,
 				C56CA1561D87F1980092E69D /* text.cpp in Sources */,
@@ -1018,7 +1031,6 @@
 				C56CA1501D87F1980092E69D /* odcommands.cpp in Sources */,
 				C56CA1171D87F1980092E69D /* atom_mdat.cpp in Sources */,
 				C56CA1061D87F1980092E69D /* atom_chpl.cpp in Sources */,
-				C56CA0801D87F1900092E69D /* other.cpp in Sources */,
 				C56CA0611D87F1890092E69D /* File_posix.cpp in Sources */,
 				C56CA1491D87F1980092E69D /* mp4file.cpp in Sources */,
 			);
@@ -1042,6 +1054,7 @@
 				C5333F931D8E6D2D0060B801 /* RATreeView+Enums.m in Sources */,
 				C5333F901D8E6D2D0060B801 /* RATreeNodeController.m in Sources */,
 				C5E7F6AC1D8E2EB70018CBC6 /* AppDelegate.m in Sources */,
+				AE95E6BF1D96BAE90096CF00 /* ViewController.mm in Sources */,
 				C5333F911D8E6D2D0060B801 /* RATreeNodeItem+Private.m in Sources */,
 				C5E7F6A91D8E2EB70018CBC6 /* main.m in Sources */,
 				C5333FAA1D8E71260060B801 /* RATableViewCell.m in Sources */,

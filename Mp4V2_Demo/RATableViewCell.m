@@ -24,6 +24,7 @@
 
 @interface RATableViewCell ()
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *detailedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *customTitleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *additionButton;
@@ -53,6 +54,7 @@
 {
   self.customTitleLabel.text = title;
   self.detailedLabel.text = detailText;
+    [self.detailedLabel sizeToFit];
   self.additionButtonHidden = additionButtonHidden;
   
   if (level == 0) {
@@ -76,7 +78,11 @@
   CGRect detailsFrame = self.detailedLabel.frame;
   detailsFrame.origin.x = left;
   self.detailedLabel.frame = detailsFrame;
+    CGSize size = self.scrollView.contentSize;
+    size.width = self.detailedLabel.bounds.size.width+left+20;
+    self.scrollView.contentSize = size;
 }
+
 
 
 #pragma mark - Properties

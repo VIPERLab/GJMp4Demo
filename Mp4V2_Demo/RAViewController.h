@@ -18,6 +18,7 @@
 //CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 #import <UIKit/UIKit.h>
+#import "mp4v2.h"
 @interface RAViewController : UIViewController
-
+@property(assign,nonatomic)MP4FileHandle fileHandle;
 @end
