@@ -11,7 +11,7 @@
 
 @class GJH264Encoder;
 @protocol GJH264EncoderDelegate <NSObject>
--(void)GJH264Encoder:(GJH264Encoder*)encoder encodeCompleteBuffer:(uint8_t*)buffer withLenth:(long)totalLenth;
+-(void)GJH264Encoder:(GJH264Encoder*)encoder encodeCompleteBuffer:(uint8_t*)buffer withLenth:(long)totalLenth keyFrame:(BOOL)keyFrame;
 @end
 
 
@@ -19,9 +19,23 @@
 
 @interface GJH264Encoder : NSObject
 @property(nonatomic,weak)id<GJH264EncoderDelegate> deleagte;
-@property(nonatomic,readonly,retain)NSData* parameterSet;
+@property(nonatomic,readonly,retain)NSData* sps;
+@property(nonatomic,readonly,retain)NSData* pps;
+
 @property(assign,nonatomic) int32_t currentWidth;
 @property(assign,nonatomic) int32_t currentHeight;
--(void)encodeSampleBuffer:(CMSampleBufferRef)sampleBuffer;
+-(void)encodeSampleBuffer:(CMSampleBufferRef)sampleBuffer fourceKey:(BOOL)fourceKey;
+@property(assign,nonatomic) int32_t bitRate;
+@property(assign,nonatomic) int32_t maxKeyFrameInterval;//gop_size
+@property(assign,nonatomic) float quality;//
+@property(assign,nonatomic) CFStringRef profileLevel;//
+@property(assign,nonatomic) CFStringRef entropyMode;//
+@property(assign,nonatomic) BOOL allowBFrame;//
+@property(assign,nonatomic) BOOL allowPFrame;//
+
+@property(assign,nonatomic) int expectedFrameRate;//
+
+
+
 -(void)stop;
 @end

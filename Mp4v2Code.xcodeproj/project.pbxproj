@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE2287AF1D9D78C800870E61 /* GJCaptureTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AE95E6D11D97F8710096CF00 /* GJCaptureTool.m */; };
+		AE2287B01D9D791000870E61 /* GJH264Decoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AE95E6D31D97F8710096CF00 /* GJH264Decoder.m */; };
+		AE2287B11D9D791B00870E61 /* RAViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C5333FA81D8E71260060B801 /* RAViewController.mm */; };
+		AE2287B21D9D798300870E61 /* mp4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0DA1D87F1980092E69D /* mp4.cpp */; };
+		AE2287B31D9D7A3D00870E61 /* mp4atom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0DC1D87F1980092E69D /* mp4atom.cpp */; };
 		AE95E68D1D9626FF0096CF00 /* chapter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA1591D87F1A50092E69D /* chapter.h */; };
 		AE95E68E1D9626FF0096CF00 /* file.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA15A1D87F1A50092E69D /* file.h */; };
 		AE95E68F1D9626FF0096CF00 /* file_prop.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA15B1D87F1A50092E69D /* file_prop.h */; };
@@ -27,8 +32,6 @@
 		AE95E6CC1D97F2850096CF00 /* time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA05B1D87F1890092E69D /* time.cpp */; };
 		AE95E6CD1D97F28B0096CF00 /* time_posix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA05D1D87F1890092E69D /* time_posix.cpp */; };
 		AE95E6CE1D97F7F80096CF00 /* src.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA0FD1D87F1980092E69D /* src.h */; };
-		AE95E6DE1D97F8710096CF00 /* GJCaptureTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AE95E6D11D97F8710096CF00 /* GJCaptureTool.m */; };
-		AE95E6DF1D97F8710096CF00 /* GJH264Decoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AE95E6D31D97F8710096CF00 /* GJH264Decoder.m */; };
 		AE95E6E01D97F8710096CF00 /* GJH264Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AE95E6D51D97F8710096CF00 /* GJH264Encoder.m */; };
 		C5333F8B1D8E6D2D0060B801 /* RABatchChangeEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C5333F6D1D8E6D2D0060B801 /* RABatchChangeEntity.m */; };
 		C5333F8C1D8E6D2D0060B801 /* RABatchChanges.m in Sources */ = {isa = PBXBuildFile; fileRef = C5333F6F1D8E6D2D0060B801 /* RABatchChanges.m */; };
@@ -47,7 +50,6 @@
 		C5333FA91D8E71260060B801 /* RADataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C5333FA31D8E71260060B801 /* RADataObject.m */; };
 		C5333FAA1D8E71260060B801 /* RATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5333FA51D8E71260060B801 /* RATableViewCell.m */; };
 		C5333FAB1D8E71260060B801 /* RATableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5333FA61D8E71260060B801 /* RATableViewCell.xib */; };
-		C5333FAC1D8E71260060B801 /* RAViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C5333FA81D8E71260060B801 /* RAViewController.mm */; };
 		C56CA0601D87F1890092E69D /* File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0401D87F1890092E69D /* File.cpp */; };
 		C56CA0611D87F1890092E69D /* File_posix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0421D87F1890092E69D /* File_posix.cpp */; };
 		C56CA0631D87F1890092E69D /* FileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0441D87F1890092E69D /* FileSystem.cpp */; };
@@ -121,8 +123,6 @@
 		C56CA1421D87F1980092E69D /* Tags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0D41D87F1980092E69D /* Tags.cpp */; };
 		C56CA1431D87F1980092E69D /* type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0D61D87F1980092E69D /* type.cpp */; };
 		C56CA1441D87F1980092E69D /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0D81D87F1980092E69D /* log.cpp */; };
-		C56CA1451D87F1980092E69D /* mp4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0DA1D87F1980092E69D /* mp4.cpp */; };
-		C56CA1461D87F1980092E69D /* mp4atom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0DC1D87F1980092E69D /* mp4atom.cpp */; };
 		C56CA1471D87F1980092E69D /* mp4container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0DE1D87F1980092E69D /* mp4container.cpp */; };
 		C56CA1481D87F1980092E69D /* mp4descriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0E01D87F1980092E69D /* mp4descriptor.cpp */; };
 		C56CA1491D87F1980092E69D /* mp4file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0E21D87F1980092E69D /* mp4file.cpp */; };
@@ -986,6 +986,7 @@
 				C56CA12B1D87F1980092E69D /* atom_stsd.cpp in Sources */,
 				C56CA1301D87F1980092E69D /* atom_tkhd.cpp in Sources */,
 				C56CA14E1D87F1980092E69D /* mp4util.cpp in Sources */,
+				AE2287B31D9D7A3D00870E61 /* mp4atom.cpp in Sources */,
 				C56CA1211D87F1980092E69D /* atom_rtp.cpp in Sources */,
 				C56CA1041D87F1980092E69D /* atom_avc1.cpp in Sources */,
 				C56CA1401D87F1980092E69D /* CoverArtBox.cpp in Sources */,
@@ -1016,7 +1017,6 @@
 				C56CA13C1D87F1980092E69D /* descriptors.cpp in Sources */,
 				C56CA1021D87F1980092E69D /* atom_ac3.cpp in Sources */,
 				C56CA13A1D87F1980092E69D /* typebmff.cpp in Sources */,
-				C56CA1461D87F1980092E69D /* mp4atom.cpp in Sources */,
 				C56CA1331D87F1980092E69D /* atom_tx3g.cpp in Sources */,
 				C56CA1261D87F1980092E69D /* atom_sound.cpp in Sources */,
 				C56CA10B1D87F1980092E69D /* atom_dref.cpp in Sources */,
@@ -1030,7 +1030,6 @@
 				C56CA12E1D87F1980092E69D /* atom_text.cpp in Sources */,
 				C56CA1521D87F1980092E69D /* coding.cpp in Sources */,
 				C56CA1191D87F1980092E69D /* atom_meta.cpp in Sources */,
-				C56CA1451D87F1980092E69D /* mp4.cpp in Sources */,
 				C56CA11D1D87F1980092E69D /* atom_nmhd.cpp in Sources */,
 				C56CA14A1D87F1980092E69D /* mp4file_io.cpp in Sources */,
 				C56CA0601D87F1890092E69D /* File.cpp in Sources */,
@@ -1075,21 +1074,22 @@
 				C5333F941D8E6D2D0060B801 /* RATreeView+Private.m in Sources */,
 				C5333F8B1D8E6D2D0060B801 /* RABatchChangeEntity.m in Sources */,
 				C5333F921D8E6D2D0060B801 /* RATreeNodeItem.m in Sources */,
+				AE2287AF1D9D78C800870E61 /* GJCaptureTool.m in Sources */,
+				AE2287B21D9D798300870E61 /* mp4.cpp in Sources */,
 				C5333F961D8E6D2D0060B801 /* RATreeView+TableViewDataSource.m in Sources */,
-				AE95E6DF1D97F8710096CF00 /* GJH264Decoder.m in Sources */,
 				C5333F8C1D8E6D2D0060B801 /* RABatchChanges.m in Sources */,
 				C5333F981D8E6D2D0060B801 /* RATreeView.m in Sources */,
+				AE2287B11D9D791B00870E61 /* RAViewController.mm in Sources */,
 				C5333F931D8E6D2D0060B801 /* RATreeView+Enums.m in Sources */,
 				C5333F901D8E6D2D0060B801 /* RATreeNodeController.m in Sources */,
 				C5E7F6AC1D8E2EB70018CBC6 /* AppDelegate.m in Sources */,
 				AE95E6BF1D96BAE90096CF00 /* ViewController.mm in Sources */,
 				C5333F911D8E6D2D0060B801 /* RATreeNodeItem+Private.m in Sources */,
 				C5E7F6A91D8E2EB70018CBC6 /* main.m in Sources */,
+				AE2287B01D9D791000870E61 /* GJH264Decoder.m in Sources */,
 				AE95E6E01D97F8710096CF00 /* GJH264Encoder.m in Sources */,
 				C5333FAA1D8E71260060B801 /* RATableViewCell.m in Sources */,
-				AE95E6DE1D97F8710096CF00 /* GJCaptureTool.m in Sources */,
 				C5333F8E1D8E6D2D0060B801 /* RATreeNode.m in Sources */,
-				C5333FAC1D8E71260060B801 /* RAViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
