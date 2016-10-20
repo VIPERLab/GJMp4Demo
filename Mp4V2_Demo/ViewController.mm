@@ -37,13 +37,20 @@ using namespace mp4v2::impl;
     [self loadData];
     // Do any additional setup after loading the view.
 }
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [_captureTool startRunning];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_captureTool stopRunning];
+}
 -(void)loadData{
-    [self createFile];
+    [self readFile];
     
     _captureTool = [[GJCaptureTool alloc]initWithType: (GJCaptureType)(GJCaptureTypeAudioStream | GJCaptureTypeVideoStream) fps:15 layer:_imageView.layer];
     _captureTool.fps = 20;
     _captureTool.delegate = self;
-    [_captureTool startRunning];
     _gjEncoder = [[GJH264Encoder alloc]init];
     _gjEncoder.deleagte = self;
     

@@ -52,7 +52,7 @@ using namespace mp4v2::impl;
   treeView.dataSource = self;
   treeView.treeFooterView = [UIView new];
   treeView.separatorStyle = RATreeViewCellSeparatorStyleSingleLine;
-    treeView.rowHeight = 44;
+    treeView.rowHeight = 60;
 
   UIRefreshControl *refreshControl = [UIRefreshControl new];
   [refreshControl addTarget:self action:@selector(refreshControlChanged:) forControlEvents:UIControlEventValueChanged];
@@ -167,7 +167,7 @@ using namespace mp4v2::impl;
   RADataObject *dataObject = item;
   
   NSInteger level = [self.treeView levelForCellForItem:item];
-  NSString *detailText = [NSString stringWithFormat:@"number of children:%d  %@",dataObject.children.count, dataObject.property];
+  NSString *detailText = [NSString stringWithFormat:@"number of children:%lu  %@",(unsigned long)dataObject.children.count, dataObject.property];
   
   BOOL expanded = [self.treeView isCellForItemExpanded:item];
   
@@ -234,7 +234,8 @@ using namespace mp4v2::impl;
         NSString* propertystr ;
         for (int i = 0; i<currentAtom->GetCount(); i++) {
             MP4Property* property = currentAtom->GetProperty(i);
-            propertystr = [NSString stringWithFormat:@"%@ -- %s",propertystr,property->GetName()];
+            propertystr = [NSString stringWithFormat:@"%@ -- %s:%@",propertystr,property->GetName(),[self getValueWithProperty:property]];
+
         }
         RADataObject *current = [RADataObject dataObjectWithName:name children:nil];
         current.property = propertystr;
@@ -245,5 +246,78 @@ using namespace mp4v2::impl;
         }
         [self loadAtomWith:currentAtom superData:current data:data];
     }
+}
+-(NSString*)getValueWithProperty:(MP4Property*)property{
+    NSString* value;
+    switch (property->GetType()) {
+        case Integer8Property:
+        {
+            MP4Integer8Property *p = (MP4Integer8Property*)property;
+            value = [NSString stringWithFormat:@"Integer8Property__%d",p->GetValue()];
+            break;
+        }
+        case Integer16Property:
+        {
+            MP4Integer16Property *p = (MP4Integer16Property*)property;
+            value = [NSString stringWithFormat:@"Integer16Property__%d",p->GetValue()];
+            break;
+        }
+        case Integer24Property:
+        {
+            MP4Integer24Property *p = (MP4Integer24Property*)property;
+            value = [NSString stringWithFormat:@"Integer24Property__%d",p->GetValue()];
+            break;
+        }
+        case Integer32Property:
+        {
+            MP4Integer32Property *p = (MP4Integer32Property*)property;
+            value = [NSString stringWithFormat:@"Integer32Property__%d",p->GetValue()];
+            break;
+        }
+        case Integer64Property:
+        {
+            MP4Integer64Property *p = (MP4Integer64Property*)property;
+            value = [NSString stringWithFormat:@"Integer64Property__%llu",p->GetValue()];
+            break;
+        }
+        case Float32Property:
+        {
+            MP4Float32Property *p = (MP4Float32Property*)property;
+            value = [NSString stringWithFormat:@"Float32Property__%f",p->GetValue()];
+            break;
+        }
+        case StringProperty:
+        {
+            MP4StringProperty *p = (MP4StringProperty*)property;
+            value = [NSString stringWithFormat:@"StringProperty__%s",p->GetValue()];
+            break;
+        }
+        case BytesProperty:
+        {
+            uint32_t pValueSize;
+            uint8_t* pValue;
+            MP4BytesProperty *p = (MP4BytesProperty*)property;
+            p->GetValue(&pValue, &pValueSize);
+            value=[NSString stringWithFormat:@"BytesProperty__%s",pValue];
+            free(pValue);
+            break;
+        }
+        case TableProperty:
+             value=[NSString stringWithFormat:@"TableProperty__NULL"];
+            break;
+        case DescriptorProperty:
+             value=[NSString stringWithFormat:@"DescriptorProperty__NULL"];
+            break;
+        case LanguageCodeProperty:
+             value=[NSString stringWithFormat:@"LanguageCodeProperty__NULL"];
+            break;
+        case BasicTypeProperty:
+             value=[NSString stringWithFormat:@"BasicTypeProperty__NULL"];
+            break;
+        default:
+            NSLog(@"error getValue");
+            break;
+    }
+    return value;
 }
 @end

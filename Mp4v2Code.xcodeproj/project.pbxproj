@@ -10,7 +10,6 @@
 		AE2287AF1D9D78C800870E61 /* GJCaptureTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AE95E6D11D97F8710096CF00 /* GJCaptureTool.m */; };
 		AE2287B01D9D791000870E61 /* GJH264Decoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AE95E6D31D97F8710096CF00 /* GJH264Decoder.m */; };
 		AE2287B11D9D791B00870E61 /* RAViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C5333FA81D8E71260060B801 /* RAViewController.mm */; };
-		AE2287B21D9D798300870E61 /* mp4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0DA1D87F1980092E69D /* mp4.cpp */; };
 		AE2287B31D9D7A3D00870E61 /* mp4atom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0DC1D87F1980092E69D /* mp4atom.cpp */; };
 		AE95E68D1D9626FF0096CF00 /* chapter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA1591D87F1A50092E69D /* chapter.h */; };
 		AE95E68E1D9626FF0096CF00 /* file.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C56CA15A1D87F1A50092E69D /* file.h */; };
@@ -139,6 +138,7 @@
 		C56CA1541D87F1980092E69D /* PictureAspectRatioBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0F81D87F1980092E69D /* PictureAspectRatioBox.cpp */; };
 		C56CA1551D87F1980092E69D /* rtphint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0FB1D87F1980092E69D /* rtphint.cpp */; };
 		C56CA1561D87F1980092E69D /* text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0FE1D87F1980092E69D /* text.cpp */; };
+		C5D523801DB4A82C0082CA39 /* mp4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C56CA0DA1D87F1980092E69D /* mp4.cpp */; };
 		C5E7F6A91D8E2EB70018CBC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E7F6A81D8E2EB70018CBC6 /* main.m */; };
 		C5E7F6AC1D8E2EB70018CBC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E7F6AB1D8E2EB70018CBC6 /* AppDelegate.m */; };
 		C5E7F6B21D8E2EB70018CBC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5E7F6B01D8E2EB70018CBC6 /* Main.storyboard */; };
@@ -1059,6 +1059,7 @@
 				C56CA1061D87F1980092E69D /* atom_chpl.cpp in Sources */,
 				C56CA0611D87F1890092E69D /* File_posix.cpp in Sources */,
 				C56CA1491D87F1980092E69D /* mp4file.cpp in Sources */,
+				C5D523801DB4A82C0082CA39 /* mp4.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1075,7 +1076,6 @@
 				C5333F8B1D8E6D2D0060B801 /* RABatchChangeEntity.m in Sources */,
 				C5333F921D8E6D2D0060B801 /* RATreeNodeItem.m in Sources */,
 				AE2287AF1D9D78C800870E61 /* GJCaptureTool.m in Sources */,
-				AE2287B21D9D798300870E61 /* mp4.cpp in Sources */,
 				C5333F961D8E6D2D0060B801 /* RATreeView+TableViewDataSource.m in Sources */,
 				C5333F8C1D8E6D2D0060B801 /* RABatchChanges.m in Sources */,
 				C5333F981D8E6D2D0060B801 /* RATreeView.m in Sources */,
@@ -1250,6 +1250,7 @@
 					"\"$(SRCROOT)/Mp4v2Code\"",
 				);
 				INFOPLIST_FILE = Mp4V2_Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "--.Mp4V2-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1269,6 +1270,7 @@
 					"\"$(SRCROOT)/Mp4v2Code\"",
 				);
 				INFOPLIST_FILE = Mp4V2_Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "--.Mp4V2-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
