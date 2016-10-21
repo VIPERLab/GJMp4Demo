@@ -178,6 +178,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AE5D8D8C1DBA39D60092D2A8 /* PraseFile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PraseFile.sh; sourceTree = "<group>"; };
+		AE5D8D8D1DBA3A560092D2A8 /* staticFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = staticFile.txt; sourceTree = "<group>"; };
+		AE5D8D911DBA3E5E0092D2A8 /* PraseProduct.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = PraseProduct.rb; sourceTree = "<group>"; };
+		AE5D8D921DBA78820092D2A8 /* Mp4v2Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Mp4v2Config.xcconfig; sourceTree = "<group>"; };
 		AE95E6BD1D96BAE90096CF00 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		AE95E6BE1D96BAE90096CF00 /* ViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = ViewController.mm; sourceTree = "<group>"; };
 		AE95E6C11D97E23A0096CF00 /* impl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = impl.h; sourceTree = "<group>"; };
@@ -526,6 +530,10 @@
 			isa = PBXGroup;
 			children = (
 				C5E7F6BF1D8E31340018CBC6 /* libstdc++.tbd */,
+				AE5D8D8C1DBA39D60092D2A8 /* PraseFile.sh */,
+				AE5D8D8D1DBA3A560092D2A8 /* staticFile.txt */,
+				AE5D8D921DBA78820092D2A8 /* Mp4v2Config.xcconfig */,
+				AE5D8D911DBA3E5E0092D2A8 /* PraseProduct.rb */,
 				C56C9D801D87CE1B0092E69D /* Mp4v2Code */,
 				C5E7F6A61D8E2EB70018CBC6 /* Mp4V2_Demo */,
 				AE95E6CF1D97F8710096CF00 /* Capture */,
@@ -881,6 +889,8 @@
 				C56C9D7A1D87CE1B0092E69D /* Sources */,
 				C56C9D7B1D87CE1B0092E69D /* Frameworks */,
 				C56C9D7C1D87CE1B0092E69D /* CopyFiles */,
+				AE5D8D901DBA3E160092D2A8 /* ShellScript */,
+				AFFB30EC215F790FCBB17CFE /* Resources */,
 			);
 			buildRules = (
 			);
@@ -947,6 +957,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AFFB30EC215F790FCBB17CFE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5E7F6A31D8E2EB60018CBC6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -960,6 +977,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AE5D8D901DBA3E160092D2A8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/PraseFile.sh";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C56C9D7A1D87CE1B0092E69D /* Sources */ = {

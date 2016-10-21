@@ -1,0 +1,7 @@
+PROJECT_DIR=/Users/weichengniandashu/develop/mp4v2
+TARGETNAME=Mp4v2Code
+PROJECT_FILE_PATH=/Users/weichengniandashu/develop/mp4v2/Mp4v2Code.xcodeproj
+GROUP=Mp4v2Code/libMp4v2Code
+arch=arm64
+StaticFile=/Users/weichengniandashu/develop/mp4v2/staticFile.txt
+rubyFile=/Users/weichengniandashu/develop/mp4v2/PraseProduct.rb
